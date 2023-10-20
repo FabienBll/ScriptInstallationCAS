@@ -2,7 +2,7 @@
 # Ce script a été testé sur Debian 11
 # Ce script ne prend pas en charge les réseaux nécessitant la connexion à un proxy
 # Supprimer l'ancienne installation de GLPI : ./InstallGLPI10 clean
-# Installer GLPI 10 : ./InstallGLPI10 install [port utilé par GLPI]
+# Installer GLPI 10 : ./InstallGLPI10 install [port de votre choix utilisé par GLPI (à indiquer obligatoirement)]
 # Installer FusionInventory : ./InstallGLPI10 install_fi
 
 if [ "$(id -u)" != "0" ]; then
@@ -11,7 +11,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 if [ $# -lt 1 ]; then
-    echo "Vous devez ajouter au moins un paramètre au script (clean, install, [port utilé par GLPI], install_fi)."
+    echo "Vous devez ajouter au moins un paramètre au script (clean, install [port utilé par GLPI], install_fi)."
     exit 1
 
 fi
@@ -163,7 +163,7 @@ for arg; do
         redemarrage_services
         echo "Pour finir l'installation rendez-vous sur le lien : http://localhost:${port_glpi}"
     elif [ "${arg}" == "install_fi" ]; then
-        installation_fusioninventory
+        #installation_fusioninventory
         echo "Installation terminée."
     fi
 done

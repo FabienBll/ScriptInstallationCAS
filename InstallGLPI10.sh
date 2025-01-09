@@ -3,7 +3,6 @@
 # Ce script ne prend pas en charge les réseaux nécessitant la connexion à un proxy
 # Supprimer l'ancienne installation de GLPI : ./InstallGLPI10 clean
 # Installer GLPI 10 : ./InstallGLPI10 install [port de votre choix utilisé par GLPI (à indiquer obligatoirement)]
-# Installer FusionInventory : ./InstallGLPI10 install_fi
 
 if [ "$(id -u)" != "0" ]; then
    echo "Ce script doit être exécuté en tant que root" 1>&2
@@ -11,7 +10,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 if [ $# -lt 1 ]; then
-    echo "Vous devez ajouter au moins un paramètre au script (clean, install [port utilé par GLPI], install_fi)."
+    echo "Vous devez ajouter au moins un paramètre au script (clean, install [port utilé par GLPI])."
     exit 1
 
 fi

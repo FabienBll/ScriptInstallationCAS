@@ -131,19 +131,6 @@ redemarrage_services () {
     systemctl restart apache2
 }
 
-installation_fusioninventory () {
-    clear
-    echo "Téléchargement de FuisionInvetory..."
-    wget https://github.com/fusioninventory/fusioninventory-for-glpi/releases/download/glpi10.0.6%2B1.1/fusioninventory-10.0.6+1.1.tar.bz2 >/dev/null
-    tar jxvf fusioninventory-10.0.6+1.1.tar.bz2 -C /var/www/glpi/plugins/ >/dev/null
-    rm fusioninventory-10.0.6+1.1.tar.bz2
-
-    echo '* * * * * cd /var/www/glpi/front/ && /usr/bin/php cron.php &>/dev/null' > /etc/cron.d/glpi
-    
-    chown -R www-data /var/www/glpi/plugins
-    chmod 644 /etc/cron.d/glpi
-}
-
 # Récupère le numéro de port passé en argument
 for arg; do
     if [[ $arg =~ ^[0-9]+$ ]]; then
@@ -162,9 +149,6 @@ for arg; do
         config_glpi
         redemarrage_services
         echo "Pour finir l'installation rendez-vous sur le lien : http://localhost:${port_glpi}"
-    elif [ "${arg}" == "install_fi" ]; then
-        #installation_fusioninventory
-        echo "Installation terminée."
     fi
 done
 
